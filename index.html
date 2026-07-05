@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Catálogo premium de relojes, ropa y zapatos con carrito y pedido por WhatsApp." />
+    <title>Aurum & Atelier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__inner">
+        <a href="#catalogo" class="brand">
+          <span class="brand__mark">A</span>
+          <span class="brand__text">Aurum & Atelier</span>
+        </a>
+        <button class="cart-toggle" id="cartToggle" aria-label="Abrir carrito" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M3 4h2l2.2 10.2a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L17 8H7" />
+            <circle cx="10" cy="19" r="1.4" />
+            <circle cx="17" cy="19" r="1.4" />
+          </svg>
+          <span class="cart-toggle__badge" id="cartBadge" hidden>0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero__content">
+          <p class="eyebrow">Colección 2026</p>
+          <h1>Elegancia en cada detalle</h1>
+          <p>
+            Descubre relojes refinados, prendas con carácter, zapatos impecables y accesorios que elevan tu estilo con una experiencia de compra elegante y rápida.
+          </p>
+          <div class="hero__actions">
+            <a href="#catalogo" class="btn btn--primary">Ver catálogo</a>
+            <a href="#categorias" class="btn btn--ghost">Explorar categorías</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="highlights" aria-label="Beneficios">
+        <article>
+          <strong>Entrega rápida</strong>
+          <span>Atención personalizada por WhatsApp</span>
+        </article>
+        <article>
+          <strong>Diseño premium</strong>
+          <span>Selección cuidada de relojes, prendas y zapatos</span>
+        </article>
+        <article>
+          <strong>Pedido seguro</strong>
+          <span>Tu compra se confirma de forma directa</span>
+        </article>
+      </section>
+
+      <section id="categorias" class="categories">
+        <div class="section-heading">
+          <p class="eyebrow">Explora por estilo</p>
+          <h2>Categorías destacadas</h2>
+        </div>
+        <div id="categoryGrid" class="category-grid"></div>
+      </section>
+
+      <section id="catalogo" class="catalog-section">
+        <div class="section-heading section-heading--space">
+          <p class="eyebrow">Nuestros productos</p>
+          <h2>Encuentra tu próxima pieza favorita</h2>
+        </div>
+
+        <div class="filters">
+          <button class="filter-chip filter-chip--active" data-filter="all" type="button">Todos</button>
+          <button class="filter-chip" data-filter="relojes" type="button">Relojes</button>
+          <button class="filter-chip" data-filter="ropa-hombre" type="button">Ropa hombre</button>
+          <button class="filter-chip" data-filter="ropa-mujer" type="button">Ropa mujer</button>
+          <button class="filter-chip" data-filter="zapatos" type="button">Zapatos</button>
+          <button class="filter-chip" data-filter="accesorios" type="button">Accesorios</button>
+          <button class="filter-chip filter-chip--secondary" id="favoritesToggle" type="button">Favoritos</button>
+        </div>
+
+        <div id="catalog" class="catalog-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Aurum & Atelier. Diseño y catálogo premium.</p>
+    </footer>
+
+    <aside class="cart-modal" id="cartPanel" aria-hidden="true">
+      <div class="cart-modal__backdrop" id="cartOverlay"></div>
+      <div class="cart-modal__dialog" role="dialog" aria-modal="true" aria-label="Carrito de compras">
+        <div class="cart-modal__header">
+          <div>
+            <p class="eyebrow eyebrow--small">Tu pedido</p>
+            <h2>Carrito de compras</h2>
+          </div>
+          <button class="cart-panel__close" id="cartClose" aria-label="Cerrar carrito">×</button>
+        </div>
+
+        <div class="cart-modal__body">
+          <div class="cart-modal__list">
+            <div id="cartEmpty" class="cart-empty">
+              <p>Tu carrito está vacío</p>
+              <span>Agrega piezas de nuestro catálogo y arma tu pedido.</span>
+            </div>
+            <ul id="cartItems" class="cart-items"></ul>
+          </div>
+
+          <div class="cart-modal__summary">
+            <div id="cartSummary" class="cart-summary-card" hidden>
+              <div class="summary-row summary-row--bold">
+                <span id="cartCount">0 artículos</span>
+                <strong id="cartTotal">$0</strong>
+              </div>
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <strong id="cartSubtotalValue">$0</strong>
+              </div>
+              <div class="summary-row">
+                <span>Descuento</span>
+                <strong id="cartDiscountValue">$0</strong>
+              </div>
+              <div class="summary-row summary-row--total">
+                <span>Total</span>
+                <strong id="cartGrandTotalValue">$0</strong>
+              </div>
+              <label class="cart-notes" for="orderNotes">
+                <span>Notas del pedido</span>
+                <textarea id="orderNotes" rows="3" placeholder="Talla, color, entrega o comentarios..."></textarea>
+              </label>
+              <div class="cart-actions">
+                <button class="btn btn--ghost btn--full" id="emptyCartBtn" type="button">Vaciar carrito</button>
+                <button class="btn btn--ghost btn--full" id="continueShoppingBtn" type="button">Continuar comprando</button>
+                <button class="btn btn--primary btn--full" id="whatsappBtn" type="button">Enviar pedido</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
