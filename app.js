@@ -1,5 +1,5 @@
 const WHATSAPP_NUMBER = '573001234567';
-const CART_KEY = 'aurum_cart';
+const CART_KEY = 'INCÓGNITO';
 const FAVORITES_KEY = 'aurum_favorites';
 const NOTES_KEY = 'aurum_notes';
 
