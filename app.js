@@ -135,7 +135,6 @@ const state = {
   notes: loadNotes(),
 };
 
-const categoryGrid = document.getElementById('categoryGrid');
 const catalog = document.getElementById('catalog');
 const filterButtons = document.querySelectorAll('.filter-chip[data-filter]');
 const favoritesToggle = document.getElementById('favoritesToggle');
@@ -240,18 +239,6 @@ function getFilteredProducts() {
     const favoriteMatch = !state.favoritesOnly || state.favorites.includes(product.id);
     return categoryMatch && favoriteMatch;
   });
-}
-
-function renderCategoryCards() {
-  categoryGrid.innerHTML = Object.entries(PRODUCT_CATEGORIES)
-    .map(([key, label]) => `
-      <article class="category-card">
-        <span class="category-card__badge">${label}</span>
-        <h3 class="category-card__title">${label}</h3>
-        <p class="category-card__text">Selecciona piezas de ${label.toLowerCase()} con un estilo premium y versátil.</p>
-      </article>
-    `)
-    .join('');
 }
 
 function renderCatalog() {
@@ -512,7 +499,6 @@ function initEvents() {
   emptyCartBtn.addEventListener('click', clearCart);
 }
 
-renderCategoryCards();
 renderCatalog();
 renderCart();
 initEvents();
